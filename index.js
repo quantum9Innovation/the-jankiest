@@ -2,6 +2,7 @@ const code = document.getElementById('code')
 const speed = 25
 const chars = 250
 const sources = [
+  'https://cdn.jsdelivr.net/gh/quantum9innovation/the-jankiest/index.min.js',
   'https://cdn.jsdelivr.net/gh/quantum9innovation/hulet/dist/hulet.min.js',
   'https://cdn.jsdelivr.net/gh/quantum9innovation/sost/dist/sost.min.js',
   'https://code.jquery.com/jquery-3.6.3.min.js',
