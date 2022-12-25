@@ -1,10 +1,13 @@
 const code = document.getElementById('code')
 const speed = 25
-const chars = 100
+const chars = 250
 const sources = [
   'https://cdn.jsdelivr.net/gh/quantum9innovation/hulet/dist/hulet.min.js',
   'https://cdn.jsdelivr.net/gh/quantum9innovation/sost/dist/sost.min.js',
-
+  'https://code.jquery.com/jquery-3.6.3.min.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js',
+  'https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js',
+  'https://browser.sentry-cdn.com/7.28.1/bundle.min.js'
 ]
 const trash = []
 let jank = `console.log("Hacking...");`
@@ -17,9 +20,22 @@ const highlight = () => {
     hljs.highlightElement(el)
   })
 }
+const shuffle = (arr) => {
+  for (var i = arr.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1))
+    var temp = arr[i]
+    arr[i] = arr[j]
+    arr[j] = temp
+  }
+}
+const clear = () => code.innerText = ''
 const reset = () => {
   j++
-  j = j % sources.length
+  if (j == trash.length) {
+    j = 0
+    shuffle(trash)
+    clear()
+  }
   if (trash[j] !== undefined) {
     jank = trash[j]
     strings = jank.split('')
@@ -39,8 +55,13 @@ const type = () => {
     type()
   }
 }
-
 sources.forEach((source) => {
-  fetch(source).then(res => res.text().then(text => trash.push(text)))
+  fetch(source).then(res => {
+    res.text().then(text => {
+      let formatted = text.replace(/\n/g, '')
+      trash.push(formatted)
+    })
+  })
 })
 setTimeout(type, 1000)
+document.addEventListener('keypress', clear)
