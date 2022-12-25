@@ -6,7 +6,6 @@ const sources = [
   'https://cdn.jsdelivr.net/gh/quantum9innovation/hulet/dist/hulet.min.js',
   'https://cdn.jsdelivr.net/gh/quantum9innovation/sost/dist/sost.min.js',
   'https://code.jquery.com/jquery-3.6.3.min.js',
-  'https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js',
   'https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js',
 ]
 const trash = []
@@ -42,7 +41,7 @@ const reset = () => {
   } else return
 }
 const type = () => {
-  if (i < strings.length) {
+  if (i < strings.length && code.innerText.length < 50000) {
     let selected = strings.slice(i, i + chars)
     code.innerText += selected.join('')
     i += chars
