@@ -8,7 +8,6 @@ const sources = [
   'https://code.jquery.com/jquery-3.6.3.min.js',
   'https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js',
   'https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js',
-  'https://browser.sentry-cdn.com/7.28.1/bundle.min.js'
 ]
 const trash = []
 let jank = `console.log("Hacking...");`
